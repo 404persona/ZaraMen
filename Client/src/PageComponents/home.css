@@ -1,0 +1,15 @@
+.carousel-indicators {
+  display: none;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+}
