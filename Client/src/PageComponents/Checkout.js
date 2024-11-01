@@ -158,20 +158,20 @@ const Checkout = () => {
                 <div>
                   <span className="font-bold">TOTAL</span>
                   <span className="font-bold mx-3.5 sm:mx-6 md:mx-10">
-                    {Math.round(handleTotal() * 100) / 100} EUR
+                    {Math.round(handleTotal() * 100) / 100} PKR
                   </span>
                 </div>
                 <div>
                   <span className="font-bold">SHIPPING</span>
                   <span className="font-bold mx-3.5 sm:mx-6 md:mx-10">
-                    10 EUR
+                    250 PKR
                   </span>
                 </div>
               </div>
               <div>
                 <span className="font-bold">TO PAY</span>
                 <span className="font-bold mx-3.5 sm:mx-6 md:mx-10">
-                  {Math.round(handleTotal() * 100) / 100 + 10} EUR
+                  {Math.round(handleTotal() * 100) / 100 + 250} PKR
                 </span>
               </div>
             </div>

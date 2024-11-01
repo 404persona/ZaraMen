@@ -29,6 +29,7 @@ import { DataContext } from "./Context/DataContext";
 import AddProduct from "./SubComponents/Account/AddProduct";
 import UpdateProduct from "./SubComponents/Account/UpdateProduct";
 import jwt_decode from "jwt-decode";
+import Navbar from "./SubComponents/Navbar";
 const App = () => {
   const [index, setIndex] = useState(0);
   const [data, setData] = useContext(DataContext);
@@ -67,7 +68,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <Nav getIndex={handleIndex} index={index} />
+        <Navbar getIndex={handleIndex} index={index} />
         <Routes>
           <Route
             path="/"

@@ -53,7 +53,7 @@ const CartItem = (props) => {
         <p className="my-1.5">{props.name}</p>
       </Link>
       <div className="flex w-full justify-between my-1.5">
-        <span>{Math.round(props.tprice * 100) / 100} EUR</span>
+        <span>{Math.round(props.tprice * 100) / 100} PKR</span>
         <span>{props.size}</span>
       </div>
       <div className="flex w-full justify-between">

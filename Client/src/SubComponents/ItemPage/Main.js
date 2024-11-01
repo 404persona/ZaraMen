@@ -162,7 +162,7 @@ function Main({ data }) {
         <p className="my-1 text-xs md:text-[16px] font-light leading-6">
           {data?.name}
         </p>
-        <p className="font-bold text-xs md:text-sm">{data?.price} EUR</p>
+        <p className="font-bold text-xs md:text-sm">{data?.price} PKR</p>
         <p className="text-[13px] font-light md:w-10/12 my-4">
           {data?.description}
         </p>

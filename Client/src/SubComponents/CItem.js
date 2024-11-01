@@ -9,7 +9,7 @@ function CItem(props) {
       </div>
       <div className="w-full flex justify-between font-light text-[10px] py-1">
         <span className="w-1/2 truncate">{props.name}</span>
-        <span>{props.price} EUR</span>
+        <span>{props.price} PKR</span>
       </div>
     </Link>
   );

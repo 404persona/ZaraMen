@@ -54,7 +54,7 @@ const DItem = (props) => {
         <p className="my-1.5 truncate">{props.name}</p>
       </Link>
       <div className="flex justify-between w-full">
-        <div className="my-1.5 ">{props.price} EUR</div>
+        <div className="my-1.5 ">{props.price} PKR</div>
         <label className="my-1.5">
           STOCK:
           <input

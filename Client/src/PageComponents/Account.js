@@ -9,7 +9,7 @@ const Account = () => {
 
   return (
     <>
-      <div className=" bg-white z-20 fixed top-16 md:top-20 lg:top-28 w-full md:top-28">
+      <div className=" bg-white z-20 fixed top-16  lg:top-28 w-full md:top-28">
         <div className="p-3.5 w-full border-b border-black">
           <Link
             to=""

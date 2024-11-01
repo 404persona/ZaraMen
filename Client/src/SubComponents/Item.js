@@ -47,7 +47,7 @@ function Item(props) {
         {props.name}
       </p>
       <p className="text-[10px] md:text-[9px]  lg:text-xs my-1 font-light">
-        {props.price} EUR
+        {props.price} PKR
       </p>
     </Link>
   );

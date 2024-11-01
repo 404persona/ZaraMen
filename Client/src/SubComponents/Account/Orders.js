@@ -47,12 +47,12 @@ const Orders = () => {
               {d.order.map((o, i) => (
                 <div key={i} className="relative">
                   <p>
-                    {o.name} ({o.qty}) (€ {o.tprice})
+                    {o.name} ({o.qty}) (Rs {o.tprice})
                   </p>
                 </div>
               ))}
             </td>
-            <td className="p-2.5 border-x border-black">EUR {d.price}</td>
+            <td className="p-2.5 border-x border-black">PKR {d.price}</td>
             <td className="p-2.5 border-x border-black">
               <select
                 name=""

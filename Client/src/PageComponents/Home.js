@@ -25,7 +25,7 @@ const Home = (props) => {
 
   return (
     <div>
-      <Carousel activeIndex={props.index} onSelect={handleSelect}>
+      {/* <Carousel activeIndex={props.index} onSelect={handleSelect}>
         <Carousel.Item>
           <Link to="/women">
             <Women data={data} />
@@ -41,7 +41,7 @@ const Home = (props) => {
             <Kids data={data} />
           </Link>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
     </div>
   );
 };
