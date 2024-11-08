@@ -1,149 +1,180 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
 import { BsBag } from "react-icons/bs";
-import { FaRegUser, FaRegUserCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaRegUser } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 import { CartContext } from "../Context/CartContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [userData] = useContext(UserContext);
   const [cartData] = useContext(CartContext);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const NavlinksDesktop = [
+    { label: "New In", href: "/newin" },
+    { label: "Woman", href: "/woman" },
+    { label: "Man", href: "/man" },
+    { label: "Home", href: "/" },
+  ];
 
   return (
-    <div className="fixed w-full z-50">
-      <div className="max-sm:m-1 max-sm:rounded-lg md:px-20 px-4 bg-white md:py-2 py-3 flex justify-between items-center">
-        {/* Animated Hamburger Icon for Mobile */}
+    <div
+      className={`fixed w-full z-40 transition-all duration-300 ${
+        isHomePage
+          ? isScrolled
+            ? "bg-white shadow-md text-black"
+            : "bg-transparent  text-white"
+          : "bg-white shadow-md  text-black"
+      }`}
+    >
+      <div className="md:px-20 px-4 py-3 flex md:justify-between justify-between items-center">
+        {/* Mobile Hamburger Icon */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden cursor-pointer text-[1.5rem]"
-          onClick={toggleMenu}
-        >
-          <motion.div
-            animate={{
-              rotate: isMenuOpen ? 48 : 0,
-              x: isMenuOpen ? 1 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.div
-              initial={{ y: -8 }}
-              animate={{
-                rotate: isMenuOpen ? -90 : 0,
-                y: isMenuOpen ? 2 : -5,
-              }}
-              transition={{ duration: 0.3 }}
-              className="h-[2px] w-6 bg-black rounded-full"
-            />
-            <motion.div
-              initial={{ y: -8 }}
-              animate={{
-                rotate: isMenuOpen ? -5 : 0,
-                y: isMenuOpen ? 0 : 0,
-              }}
-              transition={{ duration: 0.3 }}
-              className={`h-[2px] w-6 bg-black  rounded-full  ${
-                isMenuOpen ? "w-6" : "w-5"
-              }`}
-            />
-          </motion.div>
-        </motion.div>
-        <Link to="/search" className=" md:flex hidden text-[1.5rem]">
-          <IoSearch />
-        </Link>
+  initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.3 }}
+  className={`md:hidden cursor-pointer text-[1.5rem] z-50 ${
+    isMenuOpen ? "text-black" : isHomePage ? (isScrolled ? "text-black" : "text-white") : "text-black"
+  }`}
+  onClick={toggleMenu}
+>
+  <motion.div
+    animate={{
+      rotate: isMenuOpen ? 48 : 0,
+      x: isMenuOpen ? 1 : 0,
+    }}
+    transition={{ duration: 0.3 }}
+  >
+    <motion.div
+      initial={{ y: -8 }}
+      animate={{
+        rotate: isMenuOpen ? -90 : 0,
+        y: isMenuOpen ? 2 : -5,
+      }}
+      transition={{ duration: 0.3 }}
+      className={`h-[2px] w-6 rounded-full ${
+        isMenuOpen ? "bg-black" : isHomePage ? (isScrolled ? "bg-black" : "bg-white") : "bg-black"
+      }`}
+    />
+    <motion.div
+      initial={{ y: -8 }}
+      animate={{
+        rotate: isMenuOpen ? -5 : 0,
+        y: isMenuOpen ? 0 : 0,
+      }}
+      transition={{ duration: 0.3 }}
+      className={`h-[2px] rounded-full ${isMenuOpen ? "w-6 bg-black" : `w-${isHomePage && !isScrolled ? "5 bg-white" : "6 bg-black"}`}`}
+    />
+  </motion.div>
+</motion.div>
+
         {/* Logo */}
         <Link
           to="/"
-          className="relative left-3 text-center font-serif text-[1.5rem] md:text-[2rem] tracking-widest"
+          className="relative text-center font-serif text-[1.5rem] md:text-[2rem] tracking-widest"
         >
-          LOGO
+          By Anas
         </Link>
-
-        {/* Bag Icon and User Icon */}
-        <div className="flex flex-row-reverse justify-center items-center gap-2 relative">
-          <Link to="/cart" className="text-[1.5rem]">
-            <BsBag />
-            <p className="absolute md:top-[4px] top-[5px] md:left-[40px] right-[8px] md:text-[.9rem] text-[.8rem]">
-              {cartData?.length}
-            </p>
+        <div>
+          <Link
+            to="/search"
+            className=" hidden md:flex justify-start items-center relative"
+          >
+            <IoSearch className="text-xl absolute left-3" />
+            <input
+              className={`w-[400px] p-2 placeholder:text-center rounded-xl outline-none border-[1.3px] border-neutral-600 bg-transparent ${
+                isHomePage && !isScrolled
+                  ? "placeholder:text-white border-white font-light"
+                  : "placeholder:text-black font-light border-black"
+              }`}
+              placeholder="Search Here Your Outfit of the Day"
+            />
           </Link>
-          <div className="md:text-[1.5rem] text-[1.5rem]">
-            {!userData ? (
-              <Link to="/login" className="opacity-75 text-black">
-                <FaRegUserCircle className="md:text-[1.5rem] text-[1.5rem]" />
-              </Link>
-            ) : (
-              <Link to="/account" className="text-black">
-                <FaRegUserCircle />
-              </Link>
-            )}
-          </div>
+        </div>
+
+        {/* Desktop Icons (Hidden on Mobile) */}
+        <div className="flex items-center justify-center md:gap-4 gap-3">
+          <Link to="/cart" className="relative">
+            <BsBag className="text-xl" />
+            <span className="absolute top-[2.5px] right-0 text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {cartData?.length}
+            </span>
+          </Link>
+          <Link to={userData ? "/account" : "/login"}>
+            <FaRegUser className="text-xl" />
+          </Link>
         </div>
       </div>
 
       {/* Desktop Menu */}
-      <div className="px-20 md:flex hidden">
-        <hr />
-      </div>
-      <div className="md:flex hidden justify-center md:py-3 bg-white">
-        <div className="flex justify-center gap-10">
-          <a href="#" className="text-lg">
-            Home
-          </a>
-          <a href="#" className="text-lg">
-            Shop
-          </a>
-          <a href="#" className="text-lg">
-            About Us
-          </a>
-          <a href="#" className="text-lg">
-            Contact
-          </a>
-        </div>
+      <div
+        className={`${
+          isScrolled || !isHomePage
+            ? "md:flex hidden justify-center gap-8 border-t-[1px] border-black/30 py-2"
+            : "md:flex hidden justify-center gap-8 border-t-[1px] border-black/0 py-2"
+        }`}
+      >
+        {NavlinksDesktop.map((link, index) => (
+          <Link key={index} to={link.href} className="text-lg">
+            {link.label}
+          </Link>
+        ))}
       </div>
 
-      {/* Mobile Menu with Framer Motion Animation */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
+            exit={{ opacity: 0, x: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="md:hidden m-2 rounded-lg border-[1px] border-black flex py-20 min-h-full flex-col items-center justify-center gap-4 bg-white/90 backdrop-blur-sm"
+            className="md:hidden fixed top-0 left-0 w-[80%] h-full bg-white flex flex-col items-start px-10   justify-evenly text-[1rem] text-black"
             onClick={toggleMenu}
           >
-            <Link
-              to="/search"
-              className=" md:hidden text-[1.5rem]"
-              onClick={toggleMenu}
-            >
-              <input
-                className="border-[1px] border-black/30 rounded-xl placeholder:text-[.8rem] placeholder:font-light text-center outline-none"
-                placeholder="Search Your Outfit of the Day here"
-              />
-            </Link>
-            {/* Menu items with click-to-close functionality */}
-            <a href="#" className="text-lg" onClick={toggleMenu}>
-              Home
-            </a>
-            <a href="#" className="text-lg" onClick={toggleMenu}>
-              Shop
-            </a>
-            <a href="#" className="text-lg" onClick={toggleMenu}>
-              About Us
-            </a>
-            <a href="#" className="text-lg" onClick={toggleMenu}>
-              Contact
-            </a>
+            {/* <div className="p-2 text-[1.4rem] border-[1px] border-black rounded-xl flex flex-col items-center justify-center">
+              <FaRegUser />
+              <p className="text-[.8rem]">Log In</p>
+            </div> */}
+            <div>
+              <Link
+                to="/search"
+                className=" md:hidden flex justify-start items-center relative"
+              >
+                <IoSearch className="text-xl absolute left-3" />
+                <input
+                  className={` p-2 placeholder:text-center rounded-xl outline-none border-[1.3px] border-neutral-600 bg-transparent text-light`}
+                  placeholder="Search Here"
+                />
+              </Link>
+            </div>
+            <div className="flex flex-col gap-2" >
+              {NavlinksDesktop.map((link, index) => (
+                <div key={index} >
+                  <Link
+                    to={link.href}
+                    className="text-[1.3rem]"
+                    onClick={toggleMenu}
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

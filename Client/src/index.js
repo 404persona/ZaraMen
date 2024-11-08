@@ -6,8 +6,10 @@ import { UserState } from "./Context/UserContext";
 import { CartState } from "./Context/CartContext";
 import { DataState } from "./Context/DataContext";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+
   <DataState>
     <UserState>
       <CartState>
@@ -15,4 +17,5 @@ root.render(
       </CartState>
     </UserState>
   </DataState>
+
 );

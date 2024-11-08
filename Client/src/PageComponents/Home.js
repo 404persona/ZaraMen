@@ -6,6 +6,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./home.css";
+import AutoProgressCarousel from "./AutoProgressCarousel";
 const Home = (props) => {
   const [data, setData] = useState([]);
 
@@ -25,23 +26,7 @@ const Home = (props) => {
 
   return (
     <div>
-      {/* <Carousel activeIndex={props.index} onSelect={handleSelect}>
-        <Carousel.Item>
-          <Link to="/women">
-            <Women data={data} />
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Link to="/men">
-            <Men data={data} />
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Link to="/kids">
-            <Kids data={data} />
-          </Link>
-        </Carousel.Item>
-      </Carousel> */}
+     <AutoProgressCarousel/>
     </div>
   );
 };

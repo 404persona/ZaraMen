@@ -13,3 +13,51 @@
     display: none;
   }
 } */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+
+  /* max-width: 600px; */
+  margin: auto;
+  overflow: hidden;
+}
+
+.slide-content {
+  display: flex;
+  align-items: start;
+  /* padding-bottom: 70px; */
+  /* justify-content: center; */
+  font-size: 24px;
+  /* gap: 10px; */
+  height: 100vh;
+  background-color: #ddd;
+}
+
+/* Add this CSS to your main CSS file */
+.fade-image {
+  transition: opacity 1s ease-in-out;
+}
+.fade-image-enter {
+  opacity: 0;
+}
+.fade-image-enter-active {
+  opacity: 1;
+}
+
+
+.timer-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #ff7b00;
+  transition: width 0.1s linear;
+}
+
