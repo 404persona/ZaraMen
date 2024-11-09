@@ -26,8 +26,8 @@ const Navbar = () => {
 
   const NavlinksDesktop = [
     { label: "New In", href: "/newin" },
-    { label: "Woman", href: "/woman" },
-    { label: "Man", href: "/man" },
+    { label: "Women", href: "/women" },
+    { label: "Men", href: "/men" },
     { label: "Home", href: "/" },
   ];
 
@@ -109,13 +109,13 @@ const Navbar = () => {
         {/* Desktop Icons (Hidden on Mobile) */}
         <div className="flex items-center justify-center md:gap-4 gap-3">
           <Link to="/cart" className="relative">
-            <BsBag className="text-xl" />
-            <span className="absolute top-[2.5px] right-0 text-xs rounded-full h-5 w-5 flex items-center justify-center">
-              {cartData?.length}
+            <BsBag className="text-2xl" />
+            <span className="absolute top-[4px] right-[2px] text-xs rounded-full h-5 w-5 flex items-center justify-center ">
+              <p className="text-[.8rem]" >{cartData?.length}</p>
             </span>
           </Link>
           <Link to={userData ? "/account" : "/login"}>
-            <FaRegUser className="text-xl" />
+            <FaRegUser className="text-2xl" />
           </Link>
         </div>
       </div>
