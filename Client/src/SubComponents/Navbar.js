@@ -37,7 +37,7 @@ const Navbar = () => {
         isHomePage
           ? isScrolled
             ? "bg-white shadow-md text-black"
-            : "bg-transparent  text-white"
+            : "bg-transparent  text-white/80"
           : "bg-white shadow-md  text-black"
       }`}
     >
@@ -48,7 +48,7 @@ const Navbar = () => {
   animate={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.3 }}
   className={`md:hidden cursor-pointer text-[1.5rem] z-50 ${
-    isMenuOpen ? "text-black" : isHomePage ? (isScrolled ? "text-black" : "text-white") : "text-black"
+    isMenuOpen ? "text-black" : isHomePage ? (isScrolled ? "text-black" : "text-white/80") : "text-black"
   }`}
   onClick={toggleMenu}
 >
@@ -77,7 +77,7 @@ const Navbar = () => {
         y: isMenuOpen ? 0 : 0,
       }}
       transition={{ duration: 0.3 }}
-      className={`h-[2px] rounded-full ${isMenuOpen ? "w-6 bg-black" : `w-${isHomePage && !isScrolled ? "5 bg-white" : "6 bg-black"}`}`}
+      className={`h-[2px] rounded-full ${isMenuOpen ? "w-6 bg-black" : `w-${isHomePage && !isScrolled ? "5 bg-white/80" : "6 bg-black"}`}`}
     />
   </motion.div>
 </motion.div>
@@ -98,7 +98,7 @@ const Navbar = () => {
             <input
               className={`w-[400px] p-2 placeholder:text-center rounded-xl outline-none border-[1.3px] border-neutral-600 bg-transparent ${
                 isHomePage && !isScrolled
-                  ? "placeholder:text-white border-white font-light"
+                  ? "placeholder:text-white/80 border-white/80 font-light"
                   : "placeholder:text-black font-light border-black"
               }`}
               placeholder="Search Here Your Outfit of the Day"

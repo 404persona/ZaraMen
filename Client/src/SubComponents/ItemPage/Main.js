@@ -125,7 +125,7 @@ function Main({ data }) {
             <img
               src={process.env.REACT_APP_PATH + img}
               alt=""
-              className="snap-always snap-start w-full h-full"
+              className="snap-always snap-start w-full h-full object-contain"
               key={i}
             />
           ))}

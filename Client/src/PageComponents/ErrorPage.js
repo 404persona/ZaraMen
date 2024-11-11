@@ -11,7 +11,7 @@ const ErrorPage = () => {
       </i>
       <p className="my-2 font-semibold">
         GO TO:{" "}
-        <Link to="/" className="text-blue-500 underline">
+        <Link to="/" className=" underline">
           HOME PAGE
         </Link>
       </p>

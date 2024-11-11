@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Nav from "./SubComponents/Nav";
+// import Nav from "./SubComponents/Nav";
 import Footer from "./SubComponents/Footer";
 import Home from "./PageComponents/Home";
 import ProductsPage from "./PageComponents/ProductsPage";

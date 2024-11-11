@@ -8,11 +8,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const checkoutSchema = Yup.object({
-  fname: Yup.string().required("Plaese Enter Your First Name"),
-  lname: Yup.string().required("Plaese Enter Your Last Name"),
-  email: Yup.string().email().required("Plaese Enter Your Email"),
-  no: Yup.string().required("Plaese Enter Your Number"),
-  address: Yup.string().required("Plaese Enter Your Address"),
+  fname: Yup.string().required("Please Enter Your First Name"),
+  lname: Yup.string().required("Please Enter Your Last Name"),
+  email: Yup.string().email().required("Please Enter Your Email"),
+  no: Yup.string().required("Please Enter Your Number"),
+  address: Yup.string().required("Please Enter Your Address"),
 });
 
 const Checkout = () => {
